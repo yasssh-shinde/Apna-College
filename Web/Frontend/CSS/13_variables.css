@@ -1,0 +1,12 @@
+:root {
+  --main-color: #6200ea;
+  --accent-color: #03dac6;
+}
+
+.header {
+  color: var(--main-color);
+}
+
+.button {
+  background: var(--accent-color);
+}

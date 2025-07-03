@@ -1,0 +1,11 @@
+a:hover {
+  color: red;
+}
+
+input:focus {
+  border-color: green;
+}
+
+li:first-child {
+  font-weight: bold;
+}

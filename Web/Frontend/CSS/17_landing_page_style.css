@@ -1,0 +1,19 @@
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background: #f0f0f0;
+}
+
+.hero {
+  height: 100vh;
+  background: url('hero-bg.jpg') no-repeat center center/cover;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 4rem;
+}

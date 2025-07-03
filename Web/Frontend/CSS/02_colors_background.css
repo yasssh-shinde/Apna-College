@@ -1,0 +1,9 @@
+body {
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+.highlight {
+  background: linear-gradient(to right, #ff7e5f, #feb47b);
+  color: white;
+}

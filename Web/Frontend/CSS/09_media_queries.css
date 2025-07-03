@@ -1,0 +1,13 @@
+body {
+  background: white;
+}
+
+@media (max-width: 768px) {
+  body {
+    background: lightblue;
+  }
+
+  .hide-on-mobile {
+    display: none;
+  }
+}

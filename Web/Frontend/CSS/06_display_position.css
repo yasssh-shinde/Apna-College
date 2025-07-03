@@ -1,0 +1,11 @@
+.inline-box {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+}
+
+.relative-box {
+  position: relative;
+  top: 20px;
+  left: 10px;
+}

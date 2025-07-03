@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Yash Shinde - MERN Stack Developer Portfolio">
+    <meta name="keywords" content="MERN, React, Node.js, JavaScript, Portfolio">
+    <meta name="author" content="Yash Shinde">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Yash Shinde - MERN Stack Developer">
+    <meta property="og:description" content="Building modern web applications with clean UI and efficient backend systems">
+    <meta property="og:type" content="website">
+    <title>Yash Shinde - MERN Stack Developer</title>
+    <base href="/">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #6366f1;
+            --secondary-color: #0f172a;
+            --accent-color: #f59e0b;
+            --text-color: #334155;
+            --bg-color: #ffffff;
+            --card-bg: #f8fafc;
+            --border-color: #e2e8f0;
+        }
+
+        [data-theme="dark"] {
+            --primary-color: #818cf8;
+            --secondary-color: #f1f5f9;
+            --accent-color: #fbbf24;
+            --text-color: #e2e8f0;
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --border-color: #334155;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            transition: all 0.3s ease;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="rgba(255,255,255,0.1)" points="0,0 1000,300 1000,1000 0,700"/></svg>');
+            background-size: cover;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            background: var(--card-bg);
+        }
+
+        .about {
+            background: var(--card-bg);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-image {
+            text-align: center;
+        }
+
+        .profile-img {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--primary-color);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-category {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid var(--border-color);
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .skill-tag {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 2rem auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background: var(--primary-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background: inherit;
+            width: 50%;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+        }
+
+        .timeline-item:nth-child(odd)::after {
+            right: -10px;
+        }
+
+        .timeline-item:nth-child(even)::after {
+            left: -10px;
+        }
+
+        .timeline-content {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 2rem auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 1rem;
+            background: var(--bg-color);
+            color: var(--text-color);
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .footer {
+            background: var(--secondary-color);
+            color: var(--bg-color);
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: var(--border-color);
+            border-radius: 5px;
+            overflow: hidden;
+            margin-top: 0.5rem;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item::after {
+                left: 21px;
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .tech-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--card-bg);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            margin: 0.25rem;
+            font-size: 0.9rem;
+        }
+
+        .achievement-card {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 1rem;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .blog-card {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .resume-section {
+            background: var(--card-bg);
+            text-align: center;
+        }
+
+        .resume-preview {
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">Yash Shinde</div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content fade-in">
+                <h1>Yash Shinde</h1>
+                <p>MERN Stack Developer | Building Modern Web Applications</p>
+                <blockquote>
+                    <em>"Building modern web applications with clean UI and efficient backend systems."</em>
+                </blockquote>
+                <div class="cta-buttons">
+                    <a href="#resume" class="btn btn-primary">View Resume</a>
+                    <a href="#contact" class="btn btn-secondary">Contact Me</a>
+                    <a href="#projects" class="btn btn-secondary">View Projects</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about">
+        <div class="container">
+            <div class="about-content fade-in">
+                <div class="about-image">
+                    <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'><rect width='400' height='400' fill='%236366f1'/><text x='200' y='220' text-anchor='middle' fill='white' font-size='150'>👨‍💻</text></svg>" alt="Yash Shinde Profile" class="profile-img">
+                </div>
+                <div class="about-text">
+                    <h2>About Me</h2>
+                    <p>I'm <strong>Yash Shinde</strong>, a passionate MERN Stack Developer currently pursuing my <abbr title="Master of Computer Applications">MCA</abbr> at MIT-WPU. I'm not here to just code - I'm here to solve real problems, build scalable products, and rise as one of the top tech minds in India.</p>
+                    
+                    <h3>Educational Background</h3>
+                    <ul>
+                        <li><strong>MCA</strong> - MIT-WPU (2023-2025)</li>
+                        <li><strong>BCA</strong> - HVPM Amravati (2020-2023)</li>
+                    </ul>
+                    
+                    <h3>Career Goal</h3>
+                    <p>Aspiring to become a leading <mark>MERN Stack Developer</mark> focusing on scalable backend systems and modern frontend experiences. Currently targeting roles in the 10-15 LPA range.</p>
+                    
+                    <h3>Personal Traits</h3>
+                    <p>I am known for being <em>calm</em>, <em>soft-spoken</em>, and <em>disciplined</em> in my approach to problem-solving and development.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 class="fade-in">Featured Projects</h2>
+            <div class="projects-grid">
+                <article class="project-card fade-in">
+                    <h3>🔗 RideShare</h3>
+                    <p><strong>Tech Stack:</strong> MongoDB, Express.js, React.js, Node.js</p>
+                    <p>A real-time ride-sharing platform like BlaBlaCar with Google Maps integration, fare estimation, and secure authentication.</p>
+                    <details>
+                        <summary>Key Features</summary>
+                        <ul>
+                            <li>Real-time booking system</li>
+                            <li>Google Maps API integration</li>
+                            <li>Fare estimation algorithm</li>
+                            <li>Secure user authentication</li>
+                        </ul>
+                    </details>
+                    <p><small>Impact: Improved booking efficiency by 55%</small></p>
+                    <div style="margin-top: 1rem;">
+                        <a href="https://github.com/yasssh-shinde" class="btn btn-primary" target="_blank">GitHub</a>
+                        <a href="#" class="btn btn-secondary">Live Demo</a>
+                    </div>
+                </article>
+
+                <article class="project-card fade-in">
+                    <h3>🎓 Study Notion (LMS)</h3>
+                    <p><strong>Tech Stack:</strong> MERN, Cloudinary, JWT, Tailwind CSS</p>
+                    <p>A comprehensive Learning Management System with instructor dashboard, course progress tracking, and video uploads.</p>
+                    <details>
+                        <summary>Key Features</summary>
+                        <ul>
+                            <li>Instructor & Admin dashboard</li>
+                            <li>Course progress tracking</li>
+                            <li>Video upload functionality</li>
+                            <li>Payment integration</li>
+                        </ul>
+                    </details>
+                    <div style="margin-top: 1rem;">
+                        <a href="https://github.com/yasssh-shinde" class="btn btn-primary" target="_blank">GitHub</a>
+                        <a href="#" class="btn btn-secondary">Live Demo</a>
+                    </div>
+                </article>
+
+                <article class="project-card fade-in">
+                    <h3>🛒 Swapkart (E-Commerce)</h3>
+                    <p><strong>Tech Stack:</strong> Java, Spring Boot, MySQL, Thymeleaf</p>
+                    <p>Full-featured e-commerce platform with product management, shopping cart, and payment processing.</p>
+                    <details>
+                        <summary>Key Features</summary>
+                        <ul>
+                            <li>Product catalog management</li>
+                            <li>Shopping cart functionality</li>
+                            <li>User authentication</li>
+                            <li>Order management system</li>
+                        </ul>
+                    </details>
+                    <div style="margin-top: 1rem;">
+                        <a href="https://github.com/yasssh-shinde" class="btn btn-primary" target="_blank">GitHub</a>
+                        <a href="#" class="btn btn-secondary">Live Demo</a>
+                    </div>
+                </article>
+
+                <article class="project-card fade-in">
+                    <h3>🤝 Connectify (Social Media)</h3>
+                    <p><strong>Tech Stack:</strong> PHP, MySQL, HTML, CSS, JavaScript</p>
+                    <p>Social media platform with user profiles, posts, comments, and real-time messaging.</p>
+                    <details>
+                        <summary>Key Features</summary>
+                        <ul>
+                            <li>User profiles and authentication</li>
+                            <li>Post creation and sharing</li>
+                            <li>Comment system</li>
+                            <li>Real-time messaging</li>
+                        </ul>
+                    </details>
+                    <div style="margin-top: 1rem;">
+                        <a href="https://github.com/yasssh-shinde" class="btn btn-primary" target="_blank">GitHub</a>
+                        <a href="#" class="btn btn-secondary">Live Demo</a>
+                    </div>
+                </article>
+
+                <article class="project-card fade-in">
+                    <h3>🤖 AI Blog Generator</h3>
+                    <p><strong>Tech Stack:</strong> HTML, CSS, JavaScript, OpenAI API</p>
+                    <p>AI-powered blog content generator with topic suggestions and automated writing.</p>
+                    <details>
+                        <summary>Key Features</summary>
+                        <ul>
+                            <li>AI content generation</li>
+                            <li>Topic suggestions</li>
+                            <li>SEO optimization</li>
+                            <li>Export functionality</li>
+                        </ul>
+                    </details>
+                    <div style="margin-top: 1rem;">
+                        <a href="https://github.com/yasssh-shinde" class="btn btn-primary" target="_blank">GitHub</a>
+                        <a href="#" class="btn btn-secondary">Live Demo</a>
+                    </div>
+                </article>
+
+                <article class="project-card fade-in">
+                    <h3>💼 Portfolio Hub</h3>
+                    <p><strong>Tech Stack:</strong> HTML5, CSS3, JavaScript, Bootstrap</p>
+                    <p>A responsive portfolio builder helping developers showcase their work effectively.</p>
+                    <details>
+                        <summary>Key Features</summary>
+                        <ul>
+                            <li>Responsive design</li>
+                            <li>SEO optimized</li>
+                            <li>Modern UI/UX</li>
+                            <li>Cross-browser compatibility</li>
+                        </ul>
+                    </details>
+                    <div style="margin-top: 1rem;">
+                        <a href="https://github.com/yasssh-shinde" class="btn btn-primary" target="_blank">GitHub</a>
+                        <a href="#" class="btn btn-secondary">Live Demo</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <div class="container">
+            <h2 class="fade-in">Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category fade-in">
+                    <h3>Programming Languages</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">C</span>
+                        <span class="skill-tag">PHP</span>
+                        <span class="skill-tag">HTML5</span>
+                        <span class="skill-tag">CSS3</span>
+                    </div>
+                </div>
+
+                <div class="skill-category fade-in">
+                    <h3>Frameworks & Libraries</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">React.js</span>
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">Express.js</span>
+                        <span class="skill-tag">Bootstrap</span>
+                        <span class="skill-tag">Tailwind CSS</span>
+                        <span class="skill-tag">Spring Boot</span>
+                    </div>
+                </div>
+
+                <div class="skill-category fade-in">
+                    <h3>Databases</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">MongoDB</span>
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">PostgreSQL</span>
+                    </div>
+                </div>
+
+                <div class="skill-category fade-in">
+                    <h3>Tools & Platforms</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">GitHub</span>
+                        <span class="skill-tag">VS Code</span>
+                        <span class="skill-tag">Postman</span>
+                        <span class="skill-tag">Canva</span>
+                        <span class="skill-tag">Figma</span>
+                    </div>
+                </div>
+
+                <div class="skill-category fade-in">
+                    <h3>Other Skills</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">SEO</span>
+                        <span class="skill-tag">UI/UX Design</span>
+                        <span class="skill-tag">Linux Commands</span>
+                        <span class="skill-tag">Google Analytics</span>
+                        <span class="skill-tag">System Design</span>
+                    </div>
+                </div>
+
+                <div class="skill-category fade-in">
+                    <h3>Currently Learning</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Next.js</span>
+                        <span class="skill-tag">TypeScript</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">AWS</span>
+                        <span class="skill-tag">System Design</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="section about">
+        <div class="container">
+            <h2 class="fade-in">Education</h2>
+            <div class="timeline">
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <h3>Master of Computer Applications (MCA)</h3>
+                        <h4>MIT-WPU, Pune</h4>
+                        <time datetime="2023-2025">2023 - 2025</time>
+                        <p>Pursuing advanced studies in computer applications with focus on software development and emerging technologies.</p>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <h3>Bachelor of Computer Applications (BCA)</h3>
+                        <h4>HVPM, Amravati</h4>
+                        <time datetime="2020-2023">2020 - 2023</time>
+                        <p>Completed undergraduate studies with strong foundation in programming, databases, and software engineering.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements" class="section">
+        <div class="container">
+            <h2 class="fade-in">Achievements & Certifications</h2>
+            <div class="fade-in">
+                <div class="achievement-card">
+                    <h3>🏆 Full Stack Web Development</h3>
+                    <p><strong>Platform:</strong> Coursera</p>
+                    <p>Completed comprehensive full-stack development course covering MERN stack technologies.</p>
+                </div>
+                <div class="achievement-card">
+                    <h3>🎯 JavaScript Algorithms and Data Structures</h3>
+                    <p><strong>Platform:</strong> freeCodeCamp</p>
+                    <p>Mastered advanced JavaScript concepts and algorithmic problem-solving.</p>
+                </div>
+                <div class="achievement-card">
+                    <h3>🌟 Open Source Contributor</h3>
+                    <p><strong>Platform:</strong> GitHub</p>
+                    <p>Active contributor to open-source projects with 50+ contributions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blogs" class="section about">
+        <div class="container">
+            <h2 class="fade-in">Recent Blogs</h2>
+            <div class="blog-grid">
+                <article class="blog-card fade-in">
+                    <h3>🚀 Building Scalable MERN Applications</h3>
+                    <p><time datetime="2024-12-15">December 15, 2024</time></p>
+                    <p>Learn how to architect MERN stack applications that can handle millions of users with proper database design and caching strategies.</p>
+                    <a href="#" class="btn btn-primary">Read More</a>
+                </article>
+                <article class="blog-card fade-in">
+                    <h3>💡 React Performance Optimization Tips</h3>
+                    <p><time datetime="2024-12-10">December 10, 2024</time></p>
+                    <p>Discover advanced React optimization techniques including memoization, lazy loading, and bundle splitting for better performance.</p>
+                    <a href="#" class="btn btn-primary">Read More</a>
+                </article>
+                <article class="blog-card fade-in">
+                    <h3>🔧 Node.js Best Practices for Production</h3>
+                    <p><time datetime="2024-12-05">December 5, 2024</time></p>
+                    <p>Essential Node.js practices for production environments including error handling, logging, and security considerations.</p>
+                    <a href="#" class="btn btn-primary">Read More</a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resume Section -->
+    <section id="resume" class="section resume-section">
+        <div class="container">
+            <h2 class="fade-in">Resume</h2>
+            <div class="resume-preview fade-in">
+                <h3>Yash Shinde</h3>
+                <p><strong>MERN Stack Developer</strong></p>
+                <address>
+                    📍 Pune, Maharashtra, India<br>
+                    📧 yashinde72@gmail.com<br>
+                    🔗 <a href="https://www.linkedin.com/in/yasssh-shinde/" target="_blank">LinkedIn</a> | 
+                    <a href="https://github.com/yasssh-shinde" target="_blank">GitHub</a>
+                </address>
+                <br>
+                <a href="#" class="btn btn-primary" download>Download PDF Resume</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="fade-in">Get In Touch</h2>
+            
+            <div class="contact-info fade-in">
+                <div class="contact-item">
+                    <h3>📧 Email</h3>
+                    <p><a href="mailto:yashinde72@gmail.com">yashinde72@gmail.com</a></p>
+                </div>
+                <div class="contact-item">
+                    <h3>🔗 LinkedIn</h3>
+                    <p><a href="https://www.linkedin.com/in/yasssh-shinde/" target="_blank">linkedin.com/in/yasssh-shinde</a></p>
+                </div>
+                <div class="contact-item">
+                    <h3>💻 GitHub</h3>
+                    <p><a href="https://github.com/yasssh-shinde" target="_blank">github.com/yasssh-shinde</a></p>
+                </div>
+                <div class="contact-item">
+                    <h3>📍 Location</h3>
+                    <p>Pune, Maharashtra, India</p>
+                </div>
+            </div>
+
+            <form class="contact-form fade-in" onsubmit="handleSubmit(event)">
+                <fieldset>
+                    <legend>Send me a message</legend>
+                    <div class="form-group">
+                        <label for="name">Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </fieldset>
+            </form>
+        </div>
+    </section>
+
+    <!-- Social Links Section -->
+    <section class="section about">
+        <div class="container">
+            <h2 class="fade-in">Connect With Me</h2>
+            <div class="social-links fade-in">
+                <a href="https://www.linkedin.com/in/yasssh-shinde/" target="_blank" class="social-link" title="LinkedIn">
+                    <span>💼</span>
+                </a>
+                <a href="https://github.com/yasssh-shinde" target="_blank" class="social-link" title="GitHub">
+                    <span>💻</span>
+                </a>
+                <a href="https://twitter.com/yasssh_shinde" target="_blank" class="social-link" title="Twitter">
+                    <span>🐦</span>
+                </a>
+                <a href="mailto:yashinde72@gmail.com" class="social-link" title="Email">
+                    <span>📧</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Yash Shinde. All rights reserved.</p>
+            <p>
+                <small>
+                    Built with ❤️ using HTML5, CSS3, and JavaScript | 
+                    <a href="#" style="color: white;">Privacy Policy</a> | 
+                    <a href="#" style="color: white;">Terms of Service</a>
+                </small>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Additional HTML Elements for demonstration -->
+    <div style="display: none;">
+        <!-- HTML4 and HTML5 elements showcase -->
+        <acronym title="As Soon As Possible">ASAP</acronym>
+        <bdo dir="rtl">This text goes right to left</bdo>
+        <big>Big text</big>
+        <center>Centered text</center>
+        <font color="red">Red text</font>
+        <strike>Strikethrough text</strike>
+        <tt>Teletype text</tt>
+        <u>Underlined text</u>
+        
+        <!-- HTML5 semantic elements -->
+        <article>Article content</article>
+        <aside>Sidebar content</aside>
+        <canvas width="100" height="100"></canvas>
+        <datalist>
+            <option value="Option 1">
+            <option value="Option 2">
+        </datalist>
+        <dialog>Dialog content</dialog>
+        <figure>
+            <figcaption>Figure caption</figcaption>
+        </figure>
+        <footer>Footer content</footer>
+        <header>Header content</header>
+        <main>Main content</main>
+        <mark>Highlighted text</mark>
+        <meter value="0.6">60%</meter>
+        <nav>Navigation</nav>
+        <output>Output element</output>
+        <progress value="70" max="100">70%</progress>
+        <ruby>Ruby annotation</ruby>
+        <rp>Ruby parentheses</rp>
+        <rt>Ruby text</rt>
+        <section>Section content</section>
+        <summary>Summary for details</summary>
+        <time datetime="2024-12-20">December 20, 2024</time>
+        <wbr>
+        
+        <!-- Form elements -->
+        <input type="color" value="#ff0000">
+        <input type="date" value="2024-12-20">
+        <input type="datetime-local" value="2024-12-20T10:30">
+        <input type="email" value="test@example.com">
+        <input type="month" value="2024-12">
+        <input type="number" value="42">
+        <input type="range" min="0" max="100" value="50">
+        <input type="search" value="search term">
+        <input type="tel" value="+1234567890">
+        <input type="time" value="10:30">
+        <input type="url" value="https://example.com">
+        <input type="week" value="2024-W50">
+        
+        <!-- Media elements -->
+        <audio controls>
+            <source src="audio.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        <video width="320" height="240" controls>
+            <source src="video.mp4" type="video/mp4">
+            <track kind="captions" src="captions.vtt" srclang="en" label="English">
+            Your browser does not support the video element.
+        </video>
+        <embed src="file.pdf" type="application/pdf">
+        <object data="file.pdf" type="application/pdf">
+            <param name="src" value="file.pdf">
+        </object>
+        
+        <!-- Table elements -->
+        <table>
+            <caption>Table Caption</caption>
+            <colgroup>
+                <col span="2">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>Header 1</th>
+                    <th>Header 2</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Data 1</td>
+                    <td>Data 2</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td>Footer 1</td>
+                    <td>Footer 2</td>
+                </tr>
+            </tfoot>
+        </table>
+        
+        <!-- List elements -->
+        <dl>
+            <dt>Definition Term</dt>
+            <dd>Definition Description</dd>
+        </dl>
+        
+        <!-- Text formatting -->
+        <abbr title="World Wide Web">WWW</abbr>
+        <cite>Citation</cite>
+        <code>Code snippet</code>
+        <del>Deleted text</del>
+        <dfn>Definition</dfn>
+        <ins>Inserted text</ins>
+        <kbd>Keyboard input</kbd>
+        <pre>Preformatted text</pre>
+        <q>Quoted text</q>
+        <s>Strikethrough</s>
+        <samp>Sample output</samp>
+        <sub>Subscript</sub>
+        <sup>Superscript</sup>
+        <var>Variable</var>
+        
+        <!-- Interactive elements -->
+        <button type="button">Button</button>
+        <details>
+            <summary>Summary</summary>
+            <p>Details content</p>
+        </details>
+        <map name="imagemap">
+            <area shape="rect" coords="0,0,50,50" href="#" alt="Area">
+        </map>
+        <optgroup label="Group">
+            <option>Option</option>
+        </optgroup>
+        
+        <!-- Structural elements -->
+        <address>Contact information</address>
+        <div>Division</div>
+        <span>Span</span>
+        <iframe src="about:blank" title="Iframe"></iframe>
+        <noscript>No script message</noscript>
+        <script>
+            // JavaScript code
+        </script>
+        <style>
+            /* CSS code */
+        </style>
+        <link rel="stylesheet" href="styles.css">
+        <meta name="description" content="Meta description">
+    </div>
+
+    <script>
+        // Theme toggle functionality
+        let isDarkMode = false;
+        
+        function toggleTheme() {
+            isDarkMode = !isDarkMode;
+            document.body.setAttribute('data-theme', isDarkMode ? 'dark' : 'light');
+            document.querySelector('.theme-toggle').textContent = isDarkMode ? '☀️' : '🌙';
+        }
+
+        // Fade in animation on scroll
+        function handleScroll() {
+            const elements = document.querySelectorAll('.fade-in');
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Contact form submission
+        function handleSubmit(event) {
+            event.preventDefault();
+            alert('Thank you for your message! I will get back to you soon.');
+            event.target.reset();
+        }
+
+        // Navbar background change on scroll
+        function handleNavbarScroll() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(255,255,255,0.98)';
+                navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            } else {
+                navbar.style.background = 'rgba(255,255,255,0.95)';
+                navbar.style.boxShadow = 'none';
+            }
+        }
+
+        // Initialize
+        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('scroll', handleNavbarScroll);
+        window.addEventListener('load', handleScroll);
+
+        // Initialize theme
+        document.body.setAttribute('data-theme', 'light');
+        
+        // Add typing animation to hero text
+        const heroText = document.querySelector('.hero h1');
+        if (heroText) {
+            const text = heroText.textContent;
+            heroText.textContent = '';
+            let i = 0;
+            const typeWriter = () => {
+                if (i < text.length) {
+                    heroText.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 100);
+                }
+            };
+            setTimeout(typeWriter, 500);
+        }
+
+        // Add progress bars to skills
+        const skillBars = document.querySelectorAll('.progress-fill');
+        skillBars.forEach(bar => {
+            const progress = bar.getAttribute('data-progress') || '80';
+            setTimeout(() => {
+                bar.style.width = progress + '%';
+            }, 500);
+        });
+
+        // Add particle effect to hero section
+        function createParticles() {
+            const hero = document.querySelector('.hero');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.style.position = 'absolute';
+                particle.style.width = '2px';
+                particle.style.height = '2px';
+                particle.style.background = 'rgba(255,255,255,0.5)';
+                particle.style.borderRadius = '50%';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animation = `float ${Math.random() * 6 + 4}s ease-in-out infinite`;
+                hero.appendChild(particle);
+            }
+        }
+
+        // Add floating animation keyframes
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes float {
+                0%, 100% { transform: translateY(0px); }
+                50% { transform: translateY(-20px); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Initialize particles
+        createParticles();
+
+        // Add intersection observer for better performance
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        });
+
+        document.querySelectorAll('.fade-in').forEach(element => {
+            observer.observe(element);
+        });
+
+        // Add search functionality (for demonstration)
+        function searchContent(query) {
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                const content = section.textContent.toLowerCase();
+                if (content.includes(query.toLowerCase())) {
+                    section.style.display = 'block';
+                } else {
+                    section.style.display = 'none';
+                }
+            });
+        }
+
+        // Add print styles
+        window.addEventListener('beforeprint', () => {
+            document.body.classList.add('print-mode');
+        });
+
+        window.addEventListener('afterprint', () => {
+            document.body.classList.remove('print-mode');
+        });
+    </script>
+</body>
+</html>
