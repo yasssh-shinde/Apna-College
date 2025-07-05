@@ -1,0 +1,110 @@
+🔢 Percentage – Key Concepts
+📘 Basic Formula
+Percentage (%) = (Value / Total Value) × 100
+
+🔁 Conversions
+Fraction	Percentage
+1/2	            50%
+1/3	            33.33%
+1/4	            25%
+1/5	            20%
+1/6	            16.67%
+1/7	            14.28%
+1/8	            12.5%
+1/9	            11.11%
+1/10	        10%
+1/11	        9.09%
+1/12	        8.33%
+
+🔄 To convert % to fraction: divide by 100
+🔄 To convert fraction to %: multiply by 100
+
+📈 Increase/Decrease Formula
+Increase %:
+New Value = Old Value × (1 + (Increase% / 100))
+
+Decrease %:
+New Value = Old Value × (1 − (Decrease% / 100))
+
+
+
+
+🧮 Successive Percentage Change Formula:
+Net % Change = A + B + (A × B)/100
+(Use + for increase and − for decrease)
+
+👉 Example: A = +20%, B = −10%
+Net = 20 − 10 + (20×−10)/100 = 10 − 2 = 8% increase
+
+🤝 Comparison of Quantities
+If A is x% more than B, then
+B is less than A by = (x / (100 + x)) × 100%
+
+If A is x% less than B, then
+B is more than A by = (x / (100 − x)) × 100%
+
+
+
+
+🧠 Important Tricks
+x% of y = y% of x
+E.g. 25% of 40 = 40% of 25
+
+If price increases by x%, consumption must decrease by (x / (100 + x)) × 100% to maintain same expenditure.
+
+If population increases/decreases successively, use successive % change formula.
+
+
+
+
+✅ 1. Find % of a Number
+Q1. What is 30% of 250?
+👉 Solution: (30/100) × 250 = 75
+
+Q2. What is 12.5% of 400?
+👉 Solution: (12.5/100) × 400 = 50
+
+🔺 2. Percentage Increase/Decrease
+Q3. A shirt price increased from ₹800 to ₹880. Find the % increase.
+👉 Increase = 880 − 800 = 80
+% Increase = (80 / 800) × 100 = 10%
+
+Q4. A fan price decreased from ₹2000 to ₹1800. Find the % decrease.
+👉 Decrease = 2000 − 1800 = 200
+% Decrease = (200 / 2000) × 100 = 10%
+
+🔁 3. Successive % Change
+Q5. A value increases by 20% and then decreases by 10%. What is net % change?
+👉 Use formula: A + B + (A×B)/100
+= 20 − 10 + (20×−10)/100 = 10 − 2 = 8% increase
+
+👨‍👩‍👧‍👦 4. Population-based Question
+Q6. Town population = 40,000. It increases by 5% annually. What will be population after 1 year?
+👉 New = 40,000 × (1 + 5/100) = 40,000 × 1.05 = 42,000
+
+Q7. Population decreases by 4%. Current = 50,000. What was it last year?
+👉 Last Year = 50,000 / 0.96 = 52,083.33
+
+💰 5. Income–Expenditure–Savings
+Q8. Income = ₹20,000, Expenditure = ₹15,000. What is saving %?
+Saving = 20,000 − 15,000 = ₹5,000
+% Saving = (5,000 / 20,000) × 100 = 25%
+
+Q9. Income = ₹25,000, Savings = ₹5,000. What is expenditure %?
+Expenditure = 25,000 − 5,000 = 20,000
+% Expenditure = (20,000 / 25,000) × 100 = 80%
+
+🏫 6. Exam Score – Pass/Fail %
+Q10. Out of 500 students, 400 passed. Find the pass percentage.
+Pass % = (400 / 500) × 100 = 80%
+
+Q11. 120 students failed out of 800. What is the failure %?
+Fail % = (120 / 800) × 100 = 15%
+
+💹 7. Profit-Loss % based on CP/SP
+Q12. CP = ₹500, SP = ₹600. Find profit %.
+Profit = 100 ⇒ (100 / 500) × 100 = 20%
+
+Q13. CP = ₹1,200, SP = ₹1,000. Find loss %.
+Loss = 200 ⇒ (200 / 1200) × 100 = 16.67%
+
